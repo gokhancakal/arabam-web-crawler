@@ -13,9 +13,9 @@ from ArabamWebCrawler.items import ArabamWebCrawlerItem
 class ArabamSpider(scrapy.Spider):
     name = 'ArabamSpider'
     allowed_domains = ['arabam.com']
-    brand_urls = ["volvo-s60"]
+    #brand_urls = ["volvo-s60"]
     #brand_urls = ["volkswagen-polo-1-0"]
-    #brand_urls = ["anadol","aston-martin"]
+    brand_urls = ["anadol","aston-martin"]
     start_urls = ["https://www.arabam.com/ikinci-el/otomobil/" + str(i) + "?take=50" for i in brand_urls ]
  
     def parse(self, response):

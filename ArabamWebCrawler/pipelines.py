@@ -35,7 +35,9 @@ class ArabamWebCrawlerPipeline():
                     y = col.replace(":,",":").replace("  ", "").replace(",", "").replace("km", "").replace("TL", "").replace("USD", "").strip()
                     z = col.replace(":,",":").replace("  ", "").replace(",", "").replace("km", "").replace("/", ":").strip() 
                     t = col.replace(":,",":").replace("  ", "").replace(",", "").replace("km", "").replace("HP", "").replace("hp", "").replace("'ye kadar", "").replace("' e kadar", "").replace("cm3", "").replace("cc", "").replace(" - ", ":").strip() 
-                    time = col.replace(aylar[0], months[0]).replace(aylar[1], months[1]).replace(aylar[2], months[2]).replace(aylar[3], months[3]).replace(aylar[4], months[4]).replace(aylar[5], months[5]).replace(aylar[6], months[6]).replace(aylar[7], months[7]).replace(aylar[8], months[8]).replace(aylar[9], months[9]).replace(aylar[10], months[10]).replace(aylar[11], months[11]).replace(",", "").strip() 
+                    for i in range (len(months)): 
+                        col = col.replace(aylar[i], months[i]).replace(",", "").strip() 
+                    time = col
                     dim = len(x.split(':'))               
                     if(dim < 2):
                         continue
@@ -103,6 +105,7 @@ class ArabamWebCrawlerPipeline():
     
     #Deleting raw data
     try:
+        pass
         os.remove("/home/gokhan/data/arabam_raw.csv")
     except IOError:
         raise

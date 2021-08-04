@@ -5,3 +5,8 @@ Env
 * Scrapy 2.3.0
 * Python 3.6.10
 * PostgreSQL 10 database server
+Env  |
+------------- | -------------
+Scrapy 2.3.0  | Scrapy 2.3.0 
+Python 3.6.10 | Python 3.6.10
+Python 3.6.10 | PostgreSQL 10 database server

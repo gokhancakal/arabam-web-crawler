@@ -31,7 +31,7 @@ class ArabamWebCrawlerPipeline():
             for row in csv_reader:
                 item = ArabamWebCrawlerItems()
                 for col in row:            
-                    x = col.replace("'","").replace('"','').replace("[","").replace("]","").replace(":,",":").replace("  ", "").replace(",", "").replace("km", "").replace("HP", "").replace("hp", "").replace("'ye kadar", "").replace("' e kadar", "").replace("cm3", "").replace("cc", "").strip() 
+                    x = col.replace("'","").replace('"','').replace("[","").replace("]","").replace(":,",":").replace("  ", "").replace(",", "").replace("km", "").replace("HP", "").replace("hp", "").replace("'ye kadar", "").replace("' ye kadar", "").replace("e kadar", "").replace(" e kadar", "").replace("'e kadar", "").replace("' e kadar", "").replace("cm3", "").replace("cc", "").strip() 
                     y = col.replace(":,",":").replace("  ", "").replace(",", "").replace("km", "").replace("TL", "").replace("USD", "").strip()
                     z = col.replace(":,",":").replace("  ", "").replace(",", "").replace("km", "").replace("/", ":").strip() 
                     t = col.replace(":,",":").replace("  ", "").replace(",", "").replace("km", "").replace("HP", "").replace("hp", "").replace("'ye kadar", "").replace("' e kadar", "").replace("cm3", "").replace("cc", "").replace(" - ", ":").strip() 
@@ -100,8 +100,8 @@ class ArabamWebCrawlerPipeline():
     df = df.convert_dtypes()
     
     #Writing dataframe to postgresql database
-    engine = create_engine('postgresql://gokhan:Cakal2020!@10.34.39.10:5432/cars')
-    df.to_sql('arabam_data', engine,if_exists='append', index=False, chunksize=10000)
+    engine = create_engine('postgresql://gokhan:Cakal2020!@10.34.39.10:5432/tcd')
+    df.to_sql('arabam', engine,if_exists='append', index=False, chunksize=10000)
     
     #Deleting raw data
     try:
